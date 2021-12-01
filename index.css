@@ -1,0 +1,150 @@
+:root {
+  --primary_font: "Fredoka One", cursive;
+  --secondary_font: "Raleway", sans-serif;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+
+  font-family: var(--secondary_font);
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  font-family: var(--secondary_font);
+  padding: 5px 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #363636;
+  color: #cacaca;
+  border-radius: 3px;
+}
+
+input:focus,
+button:focus {
+  outline: 2px solid #ffa31a;
+}
+
+button {
+  border: none;
+  background-color: #ffa31a;
+  color: #000000;
+  font-family: var(--primary_font);
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.popup button {
+  background-color: black;
+  color: white;
+}
+
+.link {
+  max-width: 90%;
+  word-wrap: break-word;
+}
+
+span.deleteLink:hover ~ a {
+  border: 2px dashed red;
+}
+
+.deleteLink {
+  width: 25px;
+  height: 25px;
+  background-color: #000000;
+  color: #ffa31a;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 1;
+}
+
+.deleteLink:focus {
+  outline: 2px solid #ffa31a;
+}
+
+#click-buttons,
+#container {
+  display: none;
+}
+
+#click-buttons button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 3px;
+}
+
+#click-btn {
+  background-color: #000000;
+}
+
+#check-btn {
+  background-color: white;
+  border: 2px solid black;
+}
+
+#error {
+  color: red;
+}
+
+.popup #click-buttons {
+  justify-content: center;
+}
+
+#password-changed {
+  color: white;
+  background-color: green;
+  display: inline-block;
+}
+
+.incognito {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  background-color: black;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.link-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid transparent;
+}
