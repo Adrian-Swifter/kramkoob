@@ -4,20 +4,19 @@ const saveURL = document.getElementById("save_url");
 const linksContainer = document.getElementById("links");
 let links = [];
 
-let linksFromLS = JSON.parse(localStorage.getItem("links"));
-
-if (linksFromLS) {
-  links = linksFromLS;
-  render(links);
-}
+chrome.storage.local.get(["links"], function(result) {
+  if (result.links) {
+    links = result.links;
+    render(links);
+  }
+});
 
 linksContainer.addEventListener("click", function (e) {
   if (e.target && e.target.className === "deleteLink") {
     links.splice(e.target.previousElementSibling.dataset.index, 1);
-    localStorage.setItem("links", JSON.stringify(links));
+    chrome.storage.local.set({"links": links});
     render(links);
   } else if (e.target && e.target.parentElement.className === "incognito") {
-    console.log(e.target.parentElement.nextElementSibling.href);
     chrome.windows.getAll(
       { populate: false, windowTypes: ["normal"] },
       function (windows) {
@@ -64,7 +63,7 @@ saveBtn.addEventListener("click", function () {
     error.innerText = "Input value can't be empty!";
   } else {
     links.push(btoa(inputElem.value));
-    localStorage.setItem("links", JSON.stringify(links));
+    chrome.storage.local.set({"links": links});
     inputElem.value = "";
     render(links);
     error.innerText = "";
@@ -79,7 +78,7 @@ saveURL.addEventListener("click", function () {
     },
     (tabs) => {
       links.push(btoa(tabs[0].url));
-      localStorage.setItem("links", JSON.stringify(links));
+      chrome.storage.local.set({"links": links});
       render(links);
       error.innerText = "";
     }
